@@ -8,9 +8,18 @@ services:
       - "80:80"
     depends_on:
       - express_server
+    networks:
+      - dev
+
   express_server:
     container_name: express_server
     build:
       context: ./
     ports:
       - "3000:3000"
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
