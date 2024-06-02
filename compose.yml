@@ -2,11 +2,12 @@ version: "3.8"
 
 services:
   nginx:
-    image: nginx
+    container_name: nginx_rate_limiter
+    build: ./nginx
     ports:
-      - "8089:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - "8080:80"
+    depends_on:
+      - express_server
   express_server:
     container_name: express_server
     build:
